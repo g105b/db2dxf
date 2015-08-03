@@ -1,0 +1,12 @@
+{
+	"require": {
+		"symfony/console": "2.5.*",
+		"g105b/dxfwriter": "1.*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"db2dxf\\": "./src/"
+		}
+	}
+}
