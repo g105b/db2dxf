@@ -20,7 +20,7 @@ All elements must be associated to a `Drawing`, must have an `Element_Type`, and
 
 * `ID` INT
 * `ID_Drawing` INT FK[Drawing:ID]
-* `ID_Element_Type` INT FK[Element_Type:ID]
+* `ID_Element_Type` VARCHAR(32) FK[Element_Type:name]
 * `ID_Element__parent` INT FK[Element:ID] (Optional)
 * `name` VARCHAR(32)
 * `description` VARCHAR(128)
@@ -29,7 +29,6 @@ All elements must be associated to a `Drawing`, must have an `Element_Type`, and
 
 An Element Type acts as an enumeration of the different types available to the DXF format, such as `Circle`, `Spline`, `Face`, etc.
 
-* `ID` INT
 * `name` VARCHAR(32)
 
 ### `Attribute`
