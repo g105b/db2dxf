@@ -2,16 +2,6 @@
 
 Database to DXF script.
 
-Drawing
-
-has many
-
-Element - of an - (Element type)
-
-has one or more
-
-Attribute - or - Attribute list
-
 Database object definitions
 ---------------------------
 
