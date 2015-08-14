@@ -21,7 +21,7 @@ All elements must be associated to a `Drawing`, must have an `Element_Type`, and
 * `ID` INT
 * `ID_Drawing` INT FK[Drawing:ID]
 * `ID_Element_Type` INT FK[Element_Type:ID]
-* `ID_Element__parent INT FK[Element:ID] (Optional)
+* `ID_Element__parent` INT FK[Element:ID] (Optional)
 * `name` VARCHAR(32)
 * `description` VARCHAR(128)
 
@@ -37,7 +37,7 @@ An Element Type acts as an enumeration of the different types available to the D
 Defines a single attribute associated to an Element with a single value. An Attribute is a key-value-pair.
 
 * `ID` INT
-* `ID_Element INT FK[Element:ID]
+* `ID_Element` INT FK[Element:ID]
 * `key` VARCHAR(32)
 * `value` VARCHAR(128)
 
@@ -46,7 +46,7 @@ Defines a single attribute associated to an Element with a single value. An Attr
 Defines a single attribute associated to an Element with multiple values. An Attribute List is a key with multiple values associated. Each value is stored as an `Attribute_List_Item` record.
 
 * `ID` INT
-* `ID_Element INT FK[Element:ID]
+* `ID_Element` INT FK[Element:ID]
 * `key` VARCHAR(32)
 
 ### `Attribute_List_Item`
@@ -54,5 +54,5 @@ Defines a single attribute associated to an Element with multiple values. An Att
 Stores a list of values associated to an Attribute List.
 
 * `ID` INT
-* `ID_Attribute_List INT FK[Attribute_List:ID]
+* `ID_Attribute_List` INT FK[Attribute_List:ID]
 * `value` VARCHAR(128)
