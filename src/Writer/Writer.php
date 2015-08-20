@@ -42,7 +42,7 @@ public function write($filename) {
 
 			$className = ucfirst($el->type);
 			$reflector = new ReflectionClass("\\DXF\\$className");
-			$class = $reflector->newInstanceArgs($el->getParams());
+			$class = $reflector->newInstanceArgs([$el->getParams()]);
 
 			if($type === "root") {
 				$w->append($class);
@@ -53,6 +53,10 @@ public function write($filename) {
 			}
 		}
 	}
+
+	$w->appendStyle(new Style());
+	$w->appendView(new View(array('name' =>'Normal')));
+	$w->appendView(View::byWindow('Window', array(1,0), array(2,1)));
 
 	$w->saveAs($filename);
 }

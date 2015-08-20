@@ -131,7 +131,11 @@ function getAttributes(Element $element, PDO $db) {
 			$value = explode(",", substr($value, 1, -1));
 		}
 
-			echo "\tAttribute $row[key]...\n";
+		$valueText = $value;
+		if(is_array($valueText)) {
+			$valueText = implode(", ", $valueText);
+		}
+		echo "\tAttribute $row[key], $valueText...\n";
 		$attributeArray[$row["key"]] = $value;
 	}
 
@@ -150,9 +154,13 @@ function getAttributes(Element $element, PDO $db) {
 			$value = explode(",", substr($value, 1, -1));
 		}
 
-		echo "\tMulti-Attribute $row[key]...\n";
-		$multiAttributeArray []= $value;
+		$valueText = $value;
+		if(is_array($valueText)) {
+			$valueText = implode(", ", $valueText);
+		}
+		echo "\tAttribute $row[key], $valueText...\n";
+		$multiAttributeArray[$row["key"]] []= $value;
 	}
 
-	return $attributeArray;
+	return array_merge($attributeArray, $multiAttributeArray);
 }
