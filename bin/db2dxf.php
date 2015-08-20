@@ -12,7 +12,7 @@ $autoloader->addPsr4("DXF\\", realpath(
 
 use db2dxf\Element\Element;
 use \PDO;
-use \DXF\Writer;
+use db2dxf\Writer\Writer;
 use db2dxf\Element\ElementFactory;
 
 echo "\n";
@@ -81,8 +81,6 @@ $stmt->execute([":ID_Drawing" => $drawing["ID"]]);
 
 echo "Building DXF...\n";
 
-$writer = new Writer();
-
 // Root keys = element ID.
 // Child keys = parent ID.
 $elementArray = [
@@ -109,6 +107,11 @@ foreach($elementArray as $elementType => $elArray) {
 		$el->assignAttributes(getAttributes($el, $db));
 	}
 }
+
+echo "Writing to $config[file]...\n";
+$writer = new Writer($elementArray);
+$writer->write($config["file"]);
+echo "Done.\n\n";
 
 /**
  * Returns an array of Attributes associated to the element in the database.
